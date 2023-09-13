@@ -15,6 +15,7 @@ interface News {
   editorias: string;
   imagens: {
     image_intro: string;
+    image_fulltext: string;
   };
   produtos_relacionados: string;
   destaque: boolean;
@@ -23,28 +24,30 @@ interface News {
 
 const NewsList: React.FC = () => {
   const [news, setNews] = useState<News[]>([]);
-  console.log(news);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
   
-
    const fetchNews = async () => {
     try {
       const response = await fetch('https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=100');
     
       const data = await response.json();
-      
-      if (data && data.items && Array.isArray(data.items)) {
+
+      if (data && data.items && Array.isArray(data.items) && data.items.length > 0) {
         setNews(data.items);
+        const baseUrl = 'https://agenciadenoticias.ibge.gov.br/';
+        const firstNewsImages = JSON.parse(data.items[0].imagens);
+        const imageIntroUrl = baseUrl + firstNewsImages.image_intro;
+        setImageUrl(imageIntroUrl);
       }
     } catch (error) {
-      console.error('Erro ao buscar notícias:', error);
+      console.error('Erro ao buscar notícias: ', error);
     }
   };
 
   useEffect(() => {
     fetchNews();
   }, []);
- 
-
+  
   return (
     <>
     <div>
@@ -60,7 +63,9 @@ const NewsList: React.FC = () => {
           <>
             <h2>{news[0].titulo}</h2>
             
-            <img src={news[0].imagens.image_intro} alt={news[0].titulo} />
+            {imageUrl && <img src={imageUrl} alt="Imagem da primeira notícia" />}
+              
+
 
             <p>{news[0].introducao}</p>
             <p>Data de Publicação: {news[0].data_publicacao}</p>

@@ -1,5 +1,6 @@
 {
   "conventionalCommits.scopes": [
-    "criando configurações iniciais"
+    "criando configurações iniciais",
+    "instalação do vite + renderização de img c/ url"
   ]
 }
