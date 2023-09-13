@@ -1,6 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+body{
+  background-color: #f1f2f3;
+}
+
+header{
+  background-color: #272727;
+  height: 211px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo {
+  position: absolute;
+  left: 0%;
+}
+
+#header_title{
+  color: #FFF;
+  font-family: Poller One;
+  font-size: 86px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px; /* 17.442% */
+  letter-spacing: 1.6px;
+  position: absolute;
+}
+
+.hero{
+  background-color: pink;
+  height: 610px;
+}

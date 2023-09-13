@@ -6,9 +6,19 @@ import './NewList.css';
 
 interface News {
   id: number;
+  tipo: string;
   titulo: string;
-  resumo: string;
+  introducao: string;
   data_publicacao: string;
+  produto_id: number;
+  produtos: string;
+  editorias: string;
+  imagens: {
+    image_intro: string;
+  };
+  produtos_relacionados: string;
+  destaque: boolean;
+  link: string;
 }
 
 const NewsList: React.FC = () => {
@@ -33,22 +43,41 @@ const NewsList: React.FC = () => {
   useEffect(() => {
     fetchNews();
   }, []);
+ 
 
   return (
     <>
     <div>
-      <div id="header">
-        <img src={logo} alt="logo" />
-        <h1>TRYBE NEWS</h1>
+
+      <header>
+        <p id="header_title">TRYBE NEWS</p>
+
+          <img src={logo} id="logo" alt="logo" />
+      </header>
+
+      <div className="hero">
+        {news.length > 0 && (
+          <>
+            <h2>{news[0].titulo}</h2>
+            
+            <img src={news[0].imagens.image_intro} alt={news[0].titulo} />
+
+            <p>{news[0].introducao}</p>
+            <p>Data de Publicação: {news[0].data_publicacao}</p>
+          </>
+        )}
       </div>
 
-      {news.map((item) => (
-  <div key={item.id}>
-    <h2>{item.titulo}</h2>
-    <p>{item.resumo}</p>
-    <p>Data de Publicação: {item.data_publicacao}</p>
-  </div>
-))}
+      <nav>
+      </nav>
+
+      {news.slice(1, 10).map((item) => (
+        <div key={item.id}>
+          <h2>{item.titulo}</h2>
+          <p>Data de Publicação: {item.data_publicacao}</p>
+        </div>
+      ))}
+
 
     </div>
     </>
