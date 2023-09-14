@@ -10,7 +10,6 @@ body{
   background-color: #f1f2f3;
 }
 
-/* Variáveis para tamanhos e cores padrão */
 :root {
   --font-serif: 'IBM Plex Serif', serif;
   --font-sans: 'Poppins', sans-serif;
@@ -21,7 +20,6 @@ body{
   --button-size: 24px;
 }
 
-/* Estilos para o título principal */
 #titlePrincipal {
   font-family: var(--font-serif);
   font-weight: 600;
@@ -31,7 +29,6 @@ body{
   margin-top: 5px;
 }
 
-/* Estilos para introdução principal */
 .introducaoPrincipal {
   font-family: var(--font-sans);
   font-weight: 400;
@@ -41,7 +38,6 @@ body{
   margin-top: 15px;
 }
 
-/* Estilos para divisor */
 .divisorPrincipal, .divisorPrincipal2 {
   height: 36px;
   display: flex;
@@ -55,15 +51,12 @@ body{
   margin-bottom: 20px;
 }
 
-/* Estilos para container de divisor */
 .containerDivisor, .cardPai {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-
-/* Estilos para o container de cartões */
 .cardContainer {
   width: 1394px;
   display: grid;
@@ -72,7 +65,6 @@ body{
   gap: 20px;
 }
 
-/* Estilos para o cartão inferior */
 .cardInferior {
   background-color: #FFFFFF;
   width: 438px;
@@ -88,7 +80,6 @@ body{
   align-items: center;
 }
 
-/* Estilos para o título do cartão */
 .cardTitle {
   position: relative;
   width: 388px;
@@ -100,7 +91,6 @@ body{
   margin-left: 20px;
 }
 
-/* Estilos para a introdução do cartão */
 .cardIntroduction {
   position: relative;
   width: 388px;
@@ -114,7 +104,6 @@ body{
   margin-bottom: 20px;
 }
 
-/* Estilos para a seção de favoritos */
 .favorite {
   width: 408px;
   height: var(--button-size);
@@ -123,7 +112,6 @@ body{
   margin-top: 5px;
 }
 
-/* Estilos para o botão de favoritos */
 .favoriteButton {
   width: var(--button-size);
   height: var(--button-size);
@@ -143,9 +131,23 @@ header{
   align-items: center;
 }
 
-#logo {
+.containerHeader{
+  /* background-color: pink; */
+  width: 1350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo{
   position: absolute;
-  left: 0%;
+  justify-content: start;
+}
+
+#titleOrg{
+  width: 1390px;
+  display: flex;
+  justify-content: center;
 }
 
 #headerTitle{
@@ -156,7 +158,8 @@ header{
   font-weight: 400;
   line-height: 15px; /* 17.442% */
   letter-spacing: 1.6px;
-  position: absolute;
+  display: flex;
+  justify-content: center;
 }
 
 .hero{
