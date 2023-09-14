@@ -6,6 +6,7 @@ import { Hero } from './components/Hero'
 import NewsList from './components/NewList'
 
 function App() {
+  
   return ( 
     <>
       <Header />

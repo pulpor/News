@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { fetchNews } from '../utils/Api'
-import { calculateDaysAgo } from '../utils/Helpers'
+import { calculateDaysAgo, useFavorites } from '../utils/Helpers'
 import { News } from '../utils/types'
 
 export function Hero() {
@@ -21,6 +25,8 @@ export function Hero() {
     fetchData()
   }, [])
 
+  const { favorites, toggleFavorite } = useFavorites()
+
   return (
     <>
       <div className="hero">
@@ -38,7 +44,21 @@ export function Hero() {
             </div>
 
             <div className="textoCardSuperior">
-              <h3 id="newsRecentes">Notícia mais recente</h3>
+              <div className="containerRecente">
+                <h3 id="newsRecentes">Notícia mais recente</h3>
+                <button
+                  className="favoriteButton fav"
+                  onClick={() => toggleFavorite(news[0].id)}
+                >
+                  <FontAwesomeIcon
+                  icon={favorites.includes(news[0].id) ? faHeartSolid : faHeartRegular}
+                  style={{
+                    color: favorites.includes(news[0].id) ? '#C31815' : '#2a2a2a'
+                  }}
+                />
+                </button>
+              </div>
+
               <h2 id="titlePrincipal">{news[0].titulo}</h2>
 
               <p className="introducaoPrincipal">{news[0].introducao}</p>

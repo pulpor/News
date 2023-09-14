@@ -8,9 +8,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fetchNews } from '../utils/Api'
 import { calculateDaysAgo, formatIntroduction, useFavorites } from '../utils/Helpers'
 import { News } from '../utils/types'
+import { Footer } from './Footer'
+
+const itemsPerPage = 9
 
 const NewsList: React.FC = () => {
   const [news, setNews] = useState<News[]>([])
+  const [startIndex, setStartIndex] = useState(1)
+  
+  const handleButtonClick = () => {
+    setStartIndex(startIndex + itemsPerPage)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +38,7 @@ const NewsList: React.FC = () => {
       <div className="cardPai">
 
         <div className="cardContainer">
-          {news.slice(1, 10).map((item) => (
+          {news.slice(startIndex, startIndex + itemsPerPage).map((item) => (
 
             <div className="cardInferior" key={item.id}>
               <div className="topCard">
@@ -74,6 +82,7 @@ const NewsList: React.FC = () => {
               ))}
         </div>
       </div>
+      <Footer handleButtonClick={handleButtonClick} /> 
     </>
   )
 }

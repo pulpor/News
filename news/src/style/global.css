@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300;600&family=Nunito+Sans:opsz@6..12&family=Poller+One&family=Poppins:wght@200;300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300;600&family=Nunito+Sans:opsz@6..12&family=Poller+One&family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 * {
   padding: 0;
@@ -8,6 +8,9 @@
 
 body{
   background-color: #f1f2f3;
+}
+button{
+  cursor: pointer;
 }
 
 :root {
@@ -119,7 +122,6 @@ body{
   background-color: transparent;
   margin-top: 5px;
   font-size: 16px;
-  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
@@ -174,7 +176,17 @@ header{
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
 
+.containerRecente{
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.fav{
+  margin-right: 5px;
 }
 
 .cardSuperior{
@@ -220,11 +232,20 @@ header{
   color: #000000;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;  
+  transition: margin 0.2s ease-in-out;
+}
+
+.lerNews:hover{
+  background-color: #05a04d;
+  margin-top: 5px;
 }
 
 .butao {
   opacity: 0.7;
+}
+.butao:hover {
+  opacity: 0.8;
 }
 
 #titlePrincipal{
@@ -285,4 +306,55 @@ li{
   line-height: 27px;
   color: #2A2A2A;
   margin: 15px;
+}
+
+.navContainer a {
+  color: #2A2A2A;
+  text-decoration: none; 
+}
+
+.navContainer a:hover {
+  text-decoration: none; 
+  color: #971513;
+}
+.navContainer a:focus
+ {
+  text-decoration: none; 
+  color: #C31815;
+}
+.centro{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonEnd{
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.moreNews{
+  font-family: var(--font-sans);
+  width: 220px;
+  height: 60px;
+  font-weight: 500;
+  color: #C31815;
+  border: 1px solid #C31815;
+  background-color: transparent;
+  margin-top: 15px;
+  transition: margin 0.3s ease-in-out;
+}
+
+.moreNews:hover {
+  font-family: var(--font-sans);
+  width: 220px;
+  height: 60px;
+  font-weight: 500;
+  color: #72110f;
+  border: 1px solid #72110f;
+  background-color: transparent;
+  margin-top: 20px; 
+  margin-left: 5px;
 }

@@ -7,10 +7,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fetchNews } from '../utils/Api'
 import { formatIntroduction, calculateDaysAgo, useFavorites } from '../utils/Helpers'
 import { News } from '../utils/types'
+import { Footer } from './Footer'
 
 export function Favorites() {
   const { favorites, toggleFavorite } = useFavorites()
   const [news, setNews] = useState<News[]>([])
+  const [startIndex, setStartIndex] = useState(1)
+  const itemsPerPage = 9
+
+  const handleButtonClick = () => {
+    setStartIndex(startIndex + itemsPerPage)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,49 +30,46 @@ export function Favorites() {
     fetchData()
   }, [])
 
-  // Filtrar apenas as notícias que estão nos favoritos (baseado nos IDs)
   const favoriteNews = news.filter((item) => favorites.includes(item.id))
 
   return (
-    <div className="cardPai">
-      <div className="cardContainer">
-        {favoriteNews.map((item) => (
-          <div className="cardInferior" key={item.id}>
-            <div className="topCard">
-              <h2 className="cardTitle">{item.titulo}</h2>
-              <p className="cardIntroduction">
-                {formatIntroduction(item.introducao)}
-              </p>
-            </div>
-            <div className="bottomCard">
-              <div className="containerDivisor">
-                <div className="divisorPrincipal2">
-                  <p className="introducaoPrincipal">
-                    {calculateDaysAgo(item.data_publicacao)}
-                  </p>
-                  <button className="lerNews">
-                    <p className="butao">Leia a notícia aqui</p>
-                  </button>
+    <>
+      <div className="centro">
+        <div className="cardContainer">
+          {favoriteNews.slice(startIndex, startIndex + itemsPerPage).map((item) => (
+            <div className="cardPai" key={item.id}>
+              <div className="cardInferior">
+                <div className="topCard">
+                  <h2 className="cardTitle">{item.titulo}</h2>
+                  <p className="cardIntroduction">{formatIntroduction(item.introducao)}</p>
                 </div>
-              </div>
-              <hr className="linha" />
-              <div className="favorite">
-                <button
-                  className="favoriteButton"
-                  onClick={() => toggleFavorite(item.id)}
-                >
-                  <FontAwesomeIcon
+                <div className="bottomCard">
+                  <div className="containerDivisor">
+                    <div className="divisorPrincipal2">
+                      <p className="introducaoPrincipal">{calculateDaysAgo(item.data_publicacao)}</p>
+                      <button className="lerNews">
+                        <p className="butao">Leia a notícia aqui</p>
+                      </button>
+                    </div>
+                  </div>
+                  <hr className="linha" />
+                  <div className="favorite">
+                    <button className="favoriteButton" onClick={() => toggleFavorite(item.id)}>
+                      <FontAwesomeIcon
                     icon={favorites.includes(item.id) ? faHeartSolid : faHeartRegular}
                     style={{
-                      color: favorites.includes(item.id) ? '#C31815' : '#2a2a2a'
+                      color: favorites.includes(item.id) ? '#C31815' : '#2a2a2a',
                     }}
                   />
-                </button>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+      ))}
+        </div>
       </div>
-    </div>
+      <Footer handleButtonClick={handleButtonClick} />
+    </>
   )
 }
