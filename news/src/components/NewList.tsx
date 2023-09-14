@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import logo from "../images/logo.png";
 // import { fetchNews } from '../utils/api';
 import "./NewList.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 
 interface News {
   id: number;
@@ -58,26 +61,26 @@ const NewsList: React.FC = () => {
   const calculateDaysAgo = (publicationDate: string) => {
     const today = new Date();
     const parts = publicationDate.match(/(\d+)/g);
-  
+
     if (parts && parts.length === 6) {
       const [day, month, year, hours, minutes, seconds] = parts;
       const pubDate = new Date(
         Number(year),
-        Number(month) - 1, 
+        Number(month) - 1,
         // -1 do mês, pois o JS começa c janeiro sendo 0
         Number(day),
         Number(hours),
         Number(minutes),
         Number(seconds)
       );
-  
+
       if (isNaN(pubDate.getTime())) {
         return "Data de publicação inválida";
       }
-  
+
       const timeDifference = today.getTime() - pubDate.getTime();
       const daysDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
-  
+
       if (daysDifference === 1) {
         return "1 dia atrás";
       } else if (daysDifference > 1) {
@@ -89,19 +92,45 @@ const NewsList: React.FC = () => {
       return "Formato de data inválido";
     }
   };
-  
+
+  const formatIntroduction = (text: string) => {
+    let formattedText = text.replace(/\(\p\.\p\.\)/g, "");
+    formattedText = formattedText.trim();
+    // corta os espaços em branco
+
+    const dotIndex = formattedText.indexOf(".");
+    const hyphenIndex = formattedText.indexOf("-");
+
+    if (dotIndex !== -1 && (hyphenIndex === -1 || dotIndex < hyphenIndex)) {
+      return formattedText.slice(0, dotIndex + 1);
+    } else if (
+      hyphenIndex !== -1 &&
+      (dotIndex === -1 || hyphenIndex < dotIndex)
+    ) {
+      return formattedText.slice(0, hyphenIndex - 1) + ".";
+    }
+
+    return formattedText;
+  };
+
+    // Agora, criamos um estado separado para controlar as notícias favoritas
+    const [favorites, setFavorites] = useState<number[]>([]);
+
+    const toggleFavorite = (id: number) => {
+      // Verifica se a notícia já está na lista de favoritos e a remove se estiver, ou a adiciona se não estiver
+      if (favorites.includes(id)) {
+        setFavorites(favorites.filter((favId) => favId !== id));
+      } else {
+        setFavorites([...favorites, id]);
+      }
+    };
 
   return (
     <>
       <div>
-
         <header>
-
-      
-            <img src={logo} id="logo" alt="logo" />
-            <p id="header_title">TRYBE NEWS</p>
-      
-
+          <img src={logo} id="logo" alt="logo" />
+          <p id="header_title">TRYBE NEWS</p>
         </header>
 
         <div className="hero">
@@ -151,19 +180,20 @@ const NewsList: React.FC = () => {
         </div>
 
         <div className="cardPai">
+
           <div className="cardContainer">
             {news.slice(1, 10).map((item) => (
-              <div className="cardInferior">
-                <div key={item.id}>
 
-                  <h2 className="cardTitle">
-                    {item.titulo}
-                  </h2>
+              <div className="cardInferior" key={item.id}>
+                <div className="topCard">
+                  <h2 className="cardTitle">{item.titulo}</h2>
 
                   <p className="cardIntroduction">
-                    {item.introducao}
+                    {formatIntroduction(item.introducao)}
                   </p>
-                  
+                </div>
+
+                <div className="bottomCard">
                   <div className="containerDivisor">
                     <div className="divisorPrincipal2">
                       <p className="introducaoPrincipal">
@@ -176,12 +206,26 @@ const NewsList: React.FC = () => {
                     </div>
                   </div>
 
+                  <hr className="linha" />
+
+                  <div className="favorite">
+                  <button
+                    className="favoriteButton"
+                    onClick={() => toggleFavorite(item.id)}
+                  >
+                    <FontAwesomeIcon
+                      icon={favorites.includes(item.id) ? faHeartSolid : faHeartRegular}
+                      style={{
+                        color: favorites.includes(item.id) ? "#C31815" : "#2a2a2a"
+                      }}
+                    />
+                  </button>
                 </div>
+              </div>
               </div>
             ))}
           </div>
         </div>
-        
       </div>
     </>
   );
