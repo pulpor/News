@@ -1,10 +1,6 @@
 import React from 'react';
+import { NewsCardProps } from '../utils/types';
 
-interface NewsCardProps {
-  titulo: string;
-  resumo: string;
-  data_publicacao: string;
-}
 
 const NewsCard: React.FC<NewsCardProps> = ({ titulo, resumo, data_publicacao }) => {
   return (

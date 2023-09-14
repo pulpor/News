@@ -8,10 +8,16 @@ export interface News {
   produtos: string;
   editorias: string;
   imagens: {
-    image_intro: string;
+  image_intro: string;
     image_fulltext: string;
   };
   produtos_relacionados: string;
   destaque: boolean;
   link: string;
+}
+
+export interface NewsCardProps {
+  titulo: string;
+  resumo: string;
+  data_publicacao: string;
 }

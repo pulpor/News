@@ -15,24 +15,109 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "react"
+        "react",
+        "eslint-plugin-import-helpers",
+        "unused-imports"
     ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "rules": {
-        "indent": [
+        "@typescript-eslint/no-misused-promises": 0,
+        "@typescript-eslint/no-floating-promises": 0,
+        "@typescript-eslint/consistent-type-assertions": 0,
+        "@typescript-eslint/strict-boolean-expressions": 0,
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/explicit-function-return-type": 0,
+        "react/react-in-jsx-scope": "off",
+        "unused-imports/no-unused-imports": 2,
+        "@typescript-eslint/no-unused-vars": [
             "error",
-            "tab"
+            {
+                "argsIgnorePattern": "^_"
+            }
         ],
-        "linebreak-style": [
-            "error",
-            "unix"
+        "react/prop-types": 0,
+        "no-console": 0,
+        "semi": [
+            "warn",
+            "never"
         ],
         "quotes": [
             "error",
             "single"
         ],
-        "semi": [
+        "react/jsx-one-expression-per-line": [
+            "error",
+            {
+                "allow": "single-child"
+            }
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 120,
+                "ignoreComments": true,
+                "ignoreUrls": true
+            }
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "react/jsx-indent": [
+            "error",
+            2
+        ],
+        "no-else-return": [
+            "error"
+        ],
+        "object-curly-spacing": [
             "error",
             "always"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1
+            }
+        ],
+        "import-helpers/order-imports": [
+            "warn",
+            {
+                "newlinesBetween": "always",
+                "groups": [
+                    "/^react/",
+                    "/^@mui/",
+                    "/^formik/",
+                    "/^yup/",
+                    "/^@/pages/",
+                    "/^@/components/",
+                    "/^@/enums/",
+                    "/^@/hooks/",
+                    "/^@/interfaces/",
+                    "/^@/schemas/",
+                    "/^@/styles/",
+                    "/^@/utils/",
+                    [
+                        "module"
+                    ],
+                    [
+                        "/^~//"
+                    ],
+                    [
+                        "parent",
+                        "sibling",
+                        "index"
+                    ]
+                ],
+                "alphabetize": {
+                    "order": "asc",
+                    "ignoreCase": true
+                }
+            }
         ]
     }
 }

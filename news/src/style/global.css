@@ -56,18 +56,12 @@ body{
 }
 
 /* Estilos para container de divisor */
-.containerDivisor {
+.containerDivisor, .cardPai {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Estilos para o cartão pai */
-.cardPai {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 /* Estilos para o container de cartões */
 .cardContainer {
@@ -83,7 +77,7 @@ body{
   background-color: #FFFFFF;
   width: 438px;
   height: 331px;
-  border: 1px solid var(--text-color);
+  border: 1px;
   color: var(--text-color);
   margin-top: 50px;
   border-radius: 5px;
@@ -122,8 +116,11 @@ body{
 
 /* Estilos para a seção de favoritos */
 .favorite {
-  width: 388px;
+  width: 408px;
   height: var(--button-size);
+  display: flex;
+  justify-content: end;
+  margin-top: 5px;
 }
 
 /* Estilos para o botão de favoritos */
@@ -132,10 +129,11 @@ body{
   height: var(--button-size);
   border: none;
   background-color: transparent;
+  margin-top: 5px;
+  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 
 header{
   background-color: #272727;
@@ -150,7 +148,7 @@ header{
   left: 0%;
 }
 
-#header_title{
+#headerTitle{
   color: #FFF;
   font-family: Poller One;
   font-size: 86px;
@@ -235,88 +233,6 @@ header{
   margin-top: 5px;
 }
 
-.introducaoPrincipal{
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  color: #2A2A2A;
-    font-size: 15px;
-  line-height: 24.75px;
-  margin-top: 15px;
-}
-
-.divisorPrincipal, .divisorPrincipal2{
-  height: 36px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 5px;
-}
-
-.divisorPrincipal2{
-  width: 388px;
-  margin-bottom: 20px;
-}
-
-.containerDivisor{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cardPai{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cardContainer {
-  width: 1394px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, auto);
-  gap: 20px;
-}
-
-.cardInferior{
-  background-color: #FFFFFF;
-  width: 438px;
-  height: 331px;
-  border: 1px;
-  color: #2A2A2A;
-  margin-top: 50px;
-  border-radius: 5px;
-  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.24);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.cardTitle{
-  position: relative;
-  width: 388px;
-  /* height: 45px; */
-  font-family: 'IBM Plex Serif', serif;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 27px;
-  margin-top: 35px;
-  margin-left: 20px;
-}
-
-.cardIntroduction{
-  position: relative;
-  width: 388px;
-  color: #2A2A2A;
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 22px;
-  margin-top: 15px;
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
-
 .topCard{
   /* background-color: aqua; */
   height: 50%;
@@ -325,24 +241,6 @@ header{
 .bottomCard{
   /* background-color: pink; */
   margin-bottom: 15px;
-}
-
-.favorite{
-  width: 388px;
-  height: 24px;
-  display: flex;
-  justify-content: end;
-  margin-top: 5px;
-}
-
-.favoriteButton{
-  width: 24px;
-  height: 24px;
-  border: none;
-  background-color: transparent;
-  margin-top: 5px;
-  cursor: pointer;
-  font-size: 16px;
 }
 
 .linha{

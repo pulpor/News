@@ -1,3 +1,4 @@
+// import {Favorites} from './components/Favorites';
 import NewsList from './components/NewList';
 
 function App() {

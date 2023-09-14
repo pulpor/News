@@ -1,38 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 // import NewsCard from './NewCard';
-import logo from "../images/logo.png";
+import logo from '../images/logo.png';
 // import { fetchNews } from '../utils/api';
-import "./NewList.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
+import '../style/global.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
+import { News } from '../utils/types';
+import { Link } from 'react-router-dom';
+// import { FavoritosProvider } from 'src/context/Context';
 
-interface News {
-  id: number;
-  tipo: string;
-  titulo: string;
-  introducao: string;
-  data_publicacao: string;
-  produto_id: number;
-  produtos: string;
-  editorias: string;
-  imagens: {
-    image_intro: string;
-    image_fulltext: string;
-  };
-  produtos_relacionados: string;
-  destaque: boolean;
-  link: string;
-}
 
 const NewsList: React.FC = () => {
   const [news, setNews] = useState<News[]>([]);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  // const navigate = useNavigate();
 
   const fetchNews = async () => {
     try {
       const response = await fetch(
-        "https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=100"
+        'https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=100'
       );
 
       const data = await response.json();
@@ -44,13 +31,13 @@ const NewsList: React.FC = () => {
         data.items.length > 0
       ) {
         setNews(data.items);
-        const baseUrl = "https://agenciadenoticias.ibge.gov.br/";
+        const baseUrl = 'https://agenciadenoticias.ibge.gov.br/';
         const firstNewsImages = JSON.parse(data.items[0].imagens);
         const imageIntroUrl = baseUrl + firstNewsImages.image_intro;
         setImageUrl(imageIntroUrl);
       }
     } catch (error) {
-      console.error("Erro ao buscar notícias: ", error);
+      console.error('Erro ao buscar notícias: ', error);
     }
   };
 
@@ -75,31 +62,31 @@ const NewsList: React.FC = () => {
       );
 
       if (isNaN(pubDate.getTime())) {
-        return "Data de publicação inválida";
+        return 'Data de publicação inválida';
       }
 
       const timeDifference = today.getTime() - pubDate.getTime();
       const daysDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
 
       if (daysDifference === 1) {
-        return "1 dia atrás";
+        return '1 dia atrás';
       } else if (daysDifference > 1) {
         return `${daysDifference} dias atrás`;
       } else {
-        return "Hoje";
+        return 'Hoje';
       }
     } else {
-      return "Formato de data inválido";
+      return 'Formato de data inválido';
     }
   };
 
   const formatIntroduction = (text: string) => {
-    let formattedText = text.replace(/\(\p\.\p\.\)/g, "");
+    let formattedText = text.replace(/\(\p\.\p\.\)/g, '');
     formattedText = formattedText.trim();
     // corta os espaços em branco
 
-    const dotIndex = formattedText.indexOf(".");
-    const hyphenIndex = formattedText.indexOf("-");
+    const dotIndex = formattedText.indexOf('.');
+    const hyphenIndex = formattedText.indexOf('-');
 
     if (dotIndex !== -1 && (hyphenIndex === -1 || dotIndex < hyphenIndex)) {
       return formattedText.slice(0, dotIndex + 1);
@@ -107,30 +94,38 @@ const NewsList: React.FC = () => {
       hyphenIndex !== -1 &&
       (dotIndex === -1 || hyphenIndex < dotIndex)
     ) {
-      return formattedText.slice(0, hyphenIndex - 1) + ".";
+      return formattedText.slice(0, hyphenIndex - 1) + '.';
     }
 
     return formattedText;
   };
 
-    // Agora, criamos um estado separado para controlar as notícias favoritas
-    const [favorites, setFavorites] = useState<number[]>([]);
+  const [favorites, setFavorites] = useState<number[]>(
+    JSON.parse(localStorage.getItem('favorites') || '[]')
+  );
 
-    const toggleFavorite = (id: number) => {
-      // Verifica se a notícia já está na lista de favoritos e a remove se estiver, ou a adiciona se não estiver
-      if (favorites.includes(id)) {
-        setFavorites(favorites.filter((favId) => favId !== id));
-      } else {
-        setFavorites([...favorites, id]);
-      }
-    };
+  const saveFavoritesToLocalStorage = (favorites: number[]) => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  };
 
+  const toggleFavorite = (id: number) => {
+    if (favorites.includes(id)) {
+      const updatedFavorites = favorites.filter((favId) => favId !== id);
+      setFavorites(updatedFavorites);
+      saveFavoritesToLocalStorage(updatedFavorites);
+    } else {
+      const updatedFavorites = [...favorites, id];
+      setFavorites(updatedFavorites);
+      saveFavoritesToLocalStorage(updatedFavorites);
+    }
+  };    
+  
   return (
     <>
       <div>
         <header>
           <img src={logo} id="logo" alt="logo" />
-          <p id="header_title">TRYBE NEWS</p>
+          <p id="headerTitle">TRYBE NEWS</p>
         </header>
 
         <div className="hero">
@@ -174,58 +169,64 @@ const NewsList: React.FC = () => {
               <li>Mais recentes</li>
               <li>Release</li>
               <li>Notícia</li>
-              <li>Favoritas</li>
+              <li>Favoritas
+                {/* <Link to="/favorites">
+                  
+                </Link> */}
+              </li>
             </ul>
           </nav>
         </div>
 
-        <div className="cardPai">
+          <div className="cardPai">
 
-          <div className="cardContainer">
-            {news.slice(1, 10).map((item) => (
+            <div className="cardContainer">
+              {news.slice(1, 10).map((item) => (
 
-              <div className="cardInferior" key={item.id}>
-                <div className="topCard">
-                  <h2 className="cardTitle">{item.titulo}</h2>
+                <div className="cardInferior" key={item.id}>
+                  <div className="topCard">
+                    <h2 className="cardTitle">{item.titulo}</h2>
 
-                  <p className="cardIntroduction">
-                    {formatIntroduction(item.introducao)}
-                  </p>
-                </div>
+                    <p className="cardIntroduction">
+                      {formatIntroduction(item.introducao)}
+                    </p>
+                  </div>
 
-                <div className="bottomCard">
-                  <div className="containerDivisor">
-                    <div className="divisorPrincipal2">
-                      <p className="introducaoPrincipal">
-                        {calculateDaysAgo(item.data_publicacao)}
-                      </p>
+                  <div className="bottomCard">
+                    <div className="containerDivisor">
+                      <div className="divisorPrincipal2">
+                        <p className="introducaoPrincipal">
+                          {calculateDaysAgo(item.data_publicacao)}
+                        </p>
 
-                      <button className="lerNews">
-                        <p className="butao">Leia a notícia aqui</p>
+                        <button className="lerNews">
+                          <p className="butao">Leia a notícia aqui</p>
+                        </button>
+                      </div>
+                    </div>
+
+                    <hr className="linha" />
+
+                    <div className="favorite">
+                      <button
+                        className="favoriteButton"
+                        onClick={() => toggleFavorite(item.id)}
+                      >
+                        <FontAwesomeIcon
+                          icon={favorites.includes(item.id) ? faHeartSolid : faHeartRegular}
+                          style={{
+                            color: favorites.includes(item.id) ? '#C31815' : '#2a2a2a'
+                          }}
+                        />
                       </button>
                     </div>
                   </div>
-
-                  <hr className="linha" />
-
-                  <div className="favorite">
-                  <button
-                    className="favoriteButton"
-                    onClick={() => toggleFavorite(item.id)}
-                  >
-                    <FontAwesomeIcon
-                      icon={favorites.includes(item.id) ? faHeartSolid : faHeartRegular}
-                      style={{
-                        color: favorites.includes(item.id) ? "#C31815" : "#2a2a2a"
-                      }}
-                    />
-                  </button>
                 </div>
-              </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+
+
       </div>
     </>
   );

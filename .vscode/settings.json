@@ -2,6 +2,7 @@
   "conventionalCommits.scopes": [
     "criando configurações iniciais",
     "instalação do vite + renderização de img c/ url",
-    "estilizando componentes baseado no figma"
+    "estilizando componentes baseado no figma",
+    "correção de dependecias no package.json"
   ]
 }
