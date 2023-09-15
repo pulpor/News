@@ -15,7 +15,7 @@ export function Hero() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetchNews()
+      const result = await fetchNews()      
       if (result && result.news && result.imageUrl) {
         setNews(result.news)
         setImageUrl(result.imageUrl)
@@ -26,6 +26,7 @@ export function Hero() {
   }, [])
 
   const { favorites, toggleFavorite } = useFavorites()
+  const regex = /- Foto: Secom\/MT/
 
   return (
     <>
@@ -61,15 +62,17 @@ export function Hero() {
 
               <h2 id="titlePrincipal">{news[0].titulo}</h2>
 
-              <p className="introducaoPrincipal">{news[0].introducao}</p>
+              <p className="introducaoPrincipal">{news[0].introducao.replace(regex,'.')}</p>
 
               <div className="divisorPrincipal">
-                <p className="introducaoPrincipal">
+                <p className="introducaoPri.replace(/- Foto: /, '')ncipal">
                   {calculateDaysAgo(news[0].data_publicacao)}
                 </p>
 
                 <button className="lerNews">
-                  <p className="butao">Leia a notícia aqui</p>
+                  <Link to="/news">
+                    <p className="butao" >Leia a notícia aqui</p>
+                  </Link>
                 </button>
               </div>
             </div>

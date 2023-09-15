@@ -1,4 +1,6 @@
 export interface News {
+  newsTitle: string;
+  newsIntro: string;
   id: number;
   tipo: string;
   titulo: string;

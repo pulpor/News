@@ -46,7 +46,7 @@ button{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 25px;
 }
 
 .divisorPrincipal2 {
@@ -170,7 +170,7 @@ header{
   justify-content: center;
 }
 
-#imagemHero{
+#imagemHero, #imgFull{
   width: 754px;
   height: 485px;
   border-radius: 5px;
@@ -357,4 +357,62 @@ li{
   background-color: transparent;
   margin-top: 20px; 
   margin-left: 5px;
+}
+
+.paiFullNews{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerFullNews{
+  background-color: #FFF;
+  width: 1394px;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleFullNews{
+  font-size: 36px;
+}
+
+.containerMenorFull{
+  background-color: pink;
+  width: 1354px;
+  height: 750px;
+  display: flex;
+}
+
+@media screen and (max-width: 350px){
+  .cardContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 568px){
+  .cardContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 768px){
+  .cardContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .cardSuperior {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text horizontally */
+  }
+  
+  .textoCardSuperior {
+    /* Your existing styles for text content */
+    margin-bottom: 20px; /* Add some space between text and image */
+  }
 }

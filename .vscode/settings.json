@@ -5,6 +5,7 @@
     "estilizando componentes baseado no figma",
     "correção de dependecias no package.json",
     "criando 'favorites' baseado em localstorage",
-    "criando botão mais noticias e sua aplicação"
+    "criando botão mais noticias e sua aplicação",
+    "implementando aba noticias"
   ]
 }

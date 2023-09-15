@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../style/global.css'
 
+import { useNavigate } from 'react-router-dom'
+
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -33,6 +35,12 @@ const NewsList: React.FC = () => {
 
   const { favorites, toggleFavorite } = useFavorites()
 
+  const navigate = useNavigate()
+
+  const navigateToFullNews = (newsId: number) => {
+    navigate(`/new/${newsId}`)
+  }
+
   return (
     <>
       <div className="cardPai">
@@ -56,9 +64,14 @@ const NewsList: React.FC = () => {
                       {calculateDaysAgo(item.data_publicacao)}
                     </p>
 
-                    <button className="lerNews">
-                      <p className="butao">Leia a notícia aqui</p>
+                    <button
+                      className="lerNews"
+                      onClick={() => navigateToFullNews(item.id)}
+                      data-id={item.id}
+                    >
+                      <p className="butao">Leia a notícia</p>
                     </button>
+
                   </div>
                 </div>
 
