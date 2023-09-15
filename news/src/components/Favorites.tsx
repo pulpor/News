@@ -12,7 +12,7 @@ import { Footer } from './Footer'
 export function Favorites() {
   const { favorites, toggleFavorite } = useFavorites()
   const [news, setNews] = useState<News[]>([])
-  const [startIndex, setStartIndex] = useState(1)
+  const [startIndex, setStartIndex] = useState(0)
   const itemsPerPage = 9
 
   const handleButtonClick = () => {

@@ -1,4 +1,9 @@
 export interface News {
+  imageUrl: string | undefined;
+  newsLink: string;
+  newsDate: string;
+  newsEditorial: string;
+  newsType: string;
   newsTitle: string;
   newsIntro: string;
   id: number;

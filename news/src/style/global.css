@@ -39,6 +39,22 @@ button{
   font-size: 15px;
   line-height: 1.65;
   margin-top: 15px;
+  position: relative;
+}
+
+.divisorPrincipal{ 
+  width: 500px;
+}
+
+.divisorContainer{
+  /* background-color: peru; */
+  position: absolute;
+  margin-bottom: 15px;
+  width: 500px;
+  height: 85px;
+  display: flex;
+  align-items: flex-end;
+  bottom: 0;
 }
 
 .divisorPrincipal, .divisorPrincipal2 {
@@ -165,7 +181,7 @@ header{
 }
 
 .hero{
-  height: 610px;
+  height: 590px;
   display: flex;
   justify-content: center;
 }
@@ -207,13 +223,12 @@ header{
 
 .textoCardSuperior{
   width: 540px;
-  /* height: 328px; */
-  top: 405px;
   left: 1025px;
   border-radius: 5px;
   margin-left: 50px;
-  /* margin-top: 50px; */
   padding: 20px;
+  display: flex; 
+  flex-direction: column;
 }
 
 .lerNews{
@@ -280,8 +295,7 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 50px;
+  margin: 20px;
 }
 
 .navbar{
@@ -292,6 +306,8 @@ header{
   display: flex; 
   justify-content: space-between;
   align-items: center;
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
 }
 
 ul{
@@ -359,30 +375,52 @@ li{
   margin-left: 5px;
 }
 
-.paiFullNews{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .containerFullNews{
+  position: relative;
   background-color: #FFF;
   width: 1394px;
-  height: 800px;
+  height: 540px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
 }
 
 .titleFullNews{
   font-size: 36px;
 }
 
+.imagemFull{
+  height: 500px;
+}
+
 .containerMenorFull{
-  background-color: pink;
   width: 1354px;
-  height: 750px;
+  height: 500px;
   display: flex;
+  position: relative;
+}
+
+#link{
+  outline: none;
+  text-decoration: none;
+  color: #000000;
+}
+
+.cardInferior2{
+  width: 500px;
+}
+
+.cardPai2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardContainer2{
+  display: grid;
+  gap: 40px;
 }
 
 @media screen and (max-width: 350px){

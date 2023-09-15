@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
@@ -26,7 +26,13 @@ export function Hero() {
   }, [])
 
   const { favorites, toggleFavorite } = useFavorites()
-  const regex = /- Foto: Secom\/MT/
+  const regex = /- Foto:/
+
+  const navigate = useNavigate()
+
+  const navigateToFullNews = (newsId: number) => {
+    navigate(`/new/${newsId}`)
+  }
 
   return (
     <>
@@ -69,35 +75,18 @@ export function Hero() {
                   {calculateDaysAgo(news[0].data_publicacao)}
                 </p>
 
-                <button className="lerNews">
-                  <Link to="/news">
-                    <p className="butao" >Leia a notícia aqui</p>
-                  </Link>
+                <button
+                      className="lerNews"
+                      onClick={() => navigateToFullNews(news[0].id)}
+                      data-id={news[0].id}
+                    >
+                  <p className="butao">Leia a notícia</p>
                 </button>
               </div>
             </div>
           </>
       )}
         </div>
-      </div>
-
-      <div className="navContainer">
-        <nav className="navbar">
-          <ul>
-            <li>
-              <Link to="/">
-                Mais recentes
-              </Link>
-            </li>
-            <li>Release</li>
-            <li>Notícia</li>
-            <li>
-              <Link to="/favorites">
-                Favoritas
-              </Link>
-            </li>
-          </ul>
-        </nav>
       </div>
     </>
   )
