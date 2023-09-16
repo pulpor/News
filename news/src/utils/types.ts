@@ -1,5 +1,5 @@
 export interface News {
-  imageUrl: string | undefined;
+  imageUrl: string;
   newsLink: string;
   newsDate: string;
   newsEditorial: string;

@@ -34,7 +34,7 @@ export function Favorites() {
 
   return (
     <>
-      <div className="centro">
+      <div data-testid="favorites" className="centro">
         <div className="cardContainer">
           {favoriteNews.slice(startIndex, startIndex + itemsPerPage).map((item) => (
             <div className="cardPai" key={item.id}>

@@ -6,6 +6,7 @@
     "correção de dependecias no package.json",
     "criando 'favorites' baseado em localstorage",
     "criando botão mais noticias e sua aplicação",
-    "implementando aba noticias"
+    "implementando aba noticias",
+    "implementação de testes por vitest e rtl"
   ]
 }

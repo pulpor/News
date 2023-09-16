@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export function NavBar() {
   return (
-    <div className="navContainer">
+    <div data-testid="navbar" className="navContainer">
       <nav className="navbar">
         <ul>
           <li>

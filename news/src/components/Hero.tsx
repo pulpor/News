@@ -36,7 +36,7 @@ export function Hero() {
 
   return (
     <>
-      <div className="hero">
+      <div data-testid="hero" className="hero">
         <div className="cardSuperior">
           {news.length > 0 && (
           <>

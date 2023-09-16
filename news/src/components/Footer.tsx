@@ -4,7 +4,7 @@ interface FooterProps {
 
 export function Footer({ handleButtonClick }: FooterProps ) {
   return (
-    <div className="buttonEnd">
+    <div data-testid="footer" className="buttonEnd">
       <button className="moreNews" onClick={ handleButtonClick }>
         MAIS NOTÍCIAS
       </button>

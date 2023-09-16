@@ -43,7 +43,7 @@ const NewsList: React.FC = () => {
 
   return (
     <>
-      <div className="cardPai">
+      <div data-testid="newlist" className="cardPai">
 
         <div className="cardContainer">
           {news.slice(startIndex, startIndex + itemsPerPage).map((item) => (

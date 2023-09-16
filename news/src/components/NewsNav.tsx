@@ -20,6 +20,21 @@ const NewsNav: React.FC = () => {
   
   const handleButtonClick = () => {
     setStartIndex(startIndex + itemsPerPage)
+    updateImageUrls(startIndex + itemsPerPage)
+  }
+  
+  const updateImageUrls = (startIndex: number) => {
+    const urls = news
+      .slice(startIndex, startIndex + itemsPerPage)
+      .map((item: News) => {
+        const newsImages = JSON.parse(item.imagens)
+        const baseUrl = 'https://agenciadenoticias.ibge.gov.br/'
+        const imageIntroUrl = newsImages?.image_intro
+          ? baseUrl + newsImages.image_intro
+          : null
+        return imageIntroUrl || ''
+      })
+    setImageUrls(urls)
   }
 
   useEffect(() => {
@@ -40,16 +55,15 @@ const NewsNav: React.FC = () => {
     }
   
     fetchData()
-  }, [])
+  }, []) 
 
   const { favorites, toggleFavorite } = useFavorites()
-
+ 
   return (
     <>
       <div className="cardPai2">
         <div className="cardContainer2">
           {news.slice(startIndex, startIndex + itemsPerPage).map((item, index) => (
-
             <div className="containerFullNews" key={item.id}>
 
               <div className="containerMenorFull">
@@ -109,8 +123,8 @@ const NewsNav: React.FC = () => {
                         {calculateDaysAgo(item.data_publicacao)}
                       </p>
 
-                      <button className="lerNews">
-                        <Link to={item.newsLink} id="link">
+                      <button className="lerNews">                        
+                        <Link to={item.link} id="link">
                           <p className="butao">
                             Fonte Completa
                           </p>
@@ -125,7 +139,7 @@ const NewsNav: React.FC = () => {
               ))}
         </div>
       </div>
-      <Footer handleButtonClick={handleButtonClick} /> 
+      <Footer handleButtonClick={ handleButtonClick } /> 
     </>
   )
 }
