@@ -169,6 +169,11 @@ header{
   width: 100%;
 }
 
+.semBorda{
+  border: none;
+  box-shadow: none;
+}
+
 .containerHeader{
   /* background-color: pink; */
   width: 1350px;

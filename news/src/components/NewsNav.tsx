@@ -27,7 +27,7 @@ const NewsNav: React.FC = () => {
     const urls = news
       .slice(startIndex, startIndex + itemsPerPage)
       .map((item: News) => {
-        const newsImages = JSON.parse(item.imagens)
+        const newsImages = JSON.parse(JSON.stringify(item.imagens))
         const baseUrl = 'https://agenciadenoticias.ibge.gov.br/'
         const imageIntroUrl = newsImages?.image_intro
           ? baseUrl + newsImages.image_intro
@@ -62,10 +62,9 @@ const NewsNav: React.FC = () => {
   const filteredNews = news
   .filter((item) => item.tipo !== 'Release')
   .map((item) => {
-    const newsImages = JSON.parse(item.imagens)
     const baseUrl = 'https://agenciadenoticias.ibge.gov.br/'
-    const imageIntroUrl = newsImages?.image_intro
-      ? baseUrl + newsImages.image_intro
+    const imageIntroUrl = item.imagens?.image_intro
+      ? baseUrl + item.imagens.image_intro
       : null
     return {
       ...item,
@@ -73,6 +72,7 @@ const NewsNav: React.FC = () => {
     }
   })
   .slice(startIndex, startIndex + itemsPerPage)
+
  
   return (
     <>
@@ -83,20 +83,21 @@ const NewsNav: React.FC = () => {
 
               <div className="containerMenorFull">
 
-                <div className="imagemFull">
-                  {imageUrls[index] && (
+              <div className="imagemFull">
+                {imageUrls[index] && (
                   <img
-                  src={
-                    imageUrls[index].includes('/releases/')
-                      ? ghost
-                      : item.imageIntroUrl
-                  }
-                  id="imgFull"
-                  alt="Imagem da notícia"
-                  key={item.imageIntroUrl}
+                    src={
+                      imageUrls[index].includes('/releases/')
+                        ? ghost
+                        : imageUrls[index]
+                    }
+                    id="imgFull"
+                    alt="Imagem da notícia"
+                    key={item.imageIntroUrl}
                   />
                 )}
-                </div> 
+              </div>
+
               
                 <div className="textoCardSuperior">
 
