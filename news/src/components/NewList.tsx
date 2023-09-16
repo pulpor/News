@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
 import '../style/global.css'
 
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'

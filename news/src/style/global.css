@@ -9,8 +9,15 @@
 body{
   background-color: #f1f2f3;
 }
+
 button{
   cursor: pointer;
+}
+
+.app{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 :root {
@@ -23,13 +30,20 @@ button{
   --button-size: 24px;
 }
 
+.all{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 #titlePrincipal {
   font-family: var(--font-serif);
   font-weight: 600;
   color: var(--text-color);
   font-size: 32px;
   line-height: 1.3;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .introducaoPrincipal {
@@ -64,6 +78,12 @@ button{
   margin-top: 25px;
 }
 
+.paiFullNews{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .divisorPrincipal2 {
   width: 388px;
   margin-bottom: 20px;
@@ -89,7 +109,7 @@ button{
   height: 331px;
   border: 1px;
   color: var(--text-color);
-  margin-top: 50px;
+  margin-top: 10px;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
   display: flex;
@@ -146,6 +166,7 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .containerHeader{
@@ -168,6 +189,7 @@ header{
 }
 
 #headerTitle{
+  width: 100%;
   color: #FFF;
   font-family: Poller One;
   font-size: 86px;
@@ -180,9 +202,10 @@ header{
 }
 
 .hero{
-  height: 590px;
+  height: 580px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 #imagemHero, #imgFull{
@@ -223,14 +246,44 @@ header{
 .textoCardSuperior{
   width: 540px;
   left: 1025px;
-  border-radius: 5px;
   margin-left: 50px;
   padding: 20px;
   display: flex; 
   flex-direction: column;
 }
 
-.lerNews{
+.textoCardSuperior2{
+  width: 1240px;
+  padding: 20px;
+}
+
+.divisorContainer2,
+.divisorPrincipal3{
+  width: 1240px;
+  height: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.titlePrincipal2{
+  width: 1000px;
+}
+
+.introducaoPrincipal2{
+  width: 1000px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--text-color);
+  font-size: 15px;
+  line-height: 1.65;
+  margin-top: 15px;
+  position: relative;
+}
+
+.lerNews,
+.lerNews2{
   background-color: #05D465;
   border: none;
   width: 167px;
@@ -250,7 +303,8 @@ header{
   transition: margin 0.2s ease-in-out;
 }
 
-.lerNews:hover{
+.lerNews:hover,
+.lerNews2:hover{
   background-color: #05a04d;
   margin-top: 5px;
 }
@@ -260,15 +314,6 @@ header{
 }
 .butao:hover {
   opacity: 0.8;
-}
-
-#titlePrincipal{
-  font-family: 'IBM Plex Serif', serif;
-  font-weight: 600;
-  color: #2A2A2A;
-  font-size: 32px;
-  line-height: 41.6px;
-  margin-top: 5px;
 }
 
 .topCard{
@@ -374,7 +419,8 @@ li{
   margin-left: 5px;
 }
 
-.containerFullNews{
+.containerFullNews,
+.containerFullNews2 {
   position: relative;
   background-color: #FFF;
   width: 1394px;
@@ -384,6 +430,11 @@ li{
   align-items: center;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
+  margin: 10px;
+}
+
+.containerFullNews2{
+  height: 340px;
 }
 
 .titleFullNews{
@@ -419,37 +470,327 @@ li{
 
 .cardContainer2{
   display: grid;
-  gap: 40px;
+}
+
+.containerRecente2{
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+
+@media screen and (max-width: 1024px) {
+  header{
+    height: 151px;
+  }  
+  .containerRecente{
+    height: 5px;
+  }
+  #headerTitle{
+    font-size: 66px;
+  }
+  #logo{
+    height: 151px;
+    left: 0;
+  }
+  .textoCardSuperior{
+    width: 385px;
+    margin: 0;
+  }
+
+  .divisorPrincipal{
+    width: 385px;
+    height: 0
+  }
+
+  .hero{
+    height: 445px;
+  }
+
+  #imagemHero{
+    width: 450px;
+    height: 280px;
+    margin-right: 10px;
+  }
+  #imgFull{
+    width: 400px;
+    height: 250px;
+    margin-left: 15px;
+    margin-top: 35px;
+  }
+  .imagemFull{
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #titlePrincipal{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 21px;
+    width: 325px;
+  }
+  .textoCardSuperior{
+    margin-top: -15px;
+  }
+  .buttonEnd{
+    height: 150px;
+  }
+
+  .introducaoPrincipal{
+    font-size: 14px;
+    width: 385px;
+  }
+
+  .cardInferior{
+    width: 350px;
+  }
+  .cardPai{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .cardInferior{
+    margin: 0;
+    width:300px;
+  }
+  .cardContainer{
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    gap: 10px;
+  }
+  .navContainer{
+    display: flex;
+    justify-content: start;
+  }
+  .navbar{
+    width: 925px;
+    margin-left: 5px;
+  }
+  .cardTitle{
+    font-size: 16px;
+  }
+  .cardIntroduction,
+  .containerDivisor,
+  .favorite, 
+  .bottomCard, 
+  .divisorPrincipal2,
+  .cardTitle
+  {
+    width: 250px;
+  }
+  .titlePrincipal2{
+    width: 750px;
+  }
+  .containerFullNews{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .containerFullNews2{
+    width: 925px;
+  }
+  .containerRecente2{
+    width: 800px;
+  }
+  .introducaoPrincipal{
+    width: 330px;
+    font-size: 12px;
+  }
+  .divisorPrincipal{
+    width: 330px;
+  }
+  .lerNews{
+    height: 35px;
+    width: 255px;
+  }
+  .titlePrincipal{
+    font-size: 20px;
+    width: 310px;
+  }
+
+  .introducaoPrincipal2,
+  .divisorPrincipal3,
+  .containerFullNews,
+  .containerFullNews2{
+    width: 800px;
+  }
+  .textoCardSuperior2{
+    width: 800px;
+  }
+  .containerFullNews{
+    height: 350px;
+  }
+  .textoCardSuperior{
+    height: 300px;
+  }
+  .containerMenorFull{
+    width: 800px;
+    height: 300px;
+  }
+  .containerRecente2,
+  .divisorPrincipal3{
+    width: 750px;
+    margin-left: 5px;
+  }
+  .introducaoPrincipal2,
+  .titlePrincipal2{
+  width: 720px;
+  margin-left: 5px;
+  }
+  .linha{
+    width: 250px;
+  }
+
+}
+
+@media screen and (max-width: 768px){
+  #headerTitle{
+    font-size: 40px;
+  }
+  header{
+    height: 100px;
+  }
+  #logo{
+    height: 100px;
+    left: 0;
+  }
+  .hero{
+    height: 380px;
+  }
+  #imagemHero{
+    width: 350px;
+    height: 220px;
+    margin-right: 10px;
+  }
+  .textoCardSuperior{
+    width: 350px;
+    margin: 0;
+  }
+  .divisorPrincipal{
+    width: 320px;
+    height: 0
+  }
+  #titlePrincipal{
+    font-size: 18px;
+    width: 300px;
+  }
+  .introducaoPrincipal{
+    font-size: 11px;
+    width: 320px;
+    margin-bottom: 10px;
+  }
+  .lerNews2{
+    height: 30px;
+    width: 150px;
+  }
+  .butao{
+    font-size: 10.609px;
+  }
+
+  li{
+    font-size: 15px;
+    margin-left: 25px;
+  }
+  .cardInferior{
+    width: 250px;
+    height: 300px;
+  }
+  .cardTitle{
+    font-size: 14px;
+    width: 190px;
+    margin-left: 0px;
+  }
+  .cardIntroduction{
+    font-size: 11px;
+    width: 190px;
+    margin-left: 0px;
+  }
+  .divisorPrincipal2{
+    width: 190px;
+    
+  }
+  .linha{
+    width: 220px;
+  }
+  .containerMenorFull{
+    width: 700px;
+    height: 250px;
+  }
+  .containerFullNews{
+    width: 700px;
+    height: 250px;
+  }
+  .containerFullNews2{
+    width: 700px;
+    height: 250px;
+  }
+  .favorite{
+    width: 220px;
+  }
+  .containerRecente2,
+  .titlePrincipal2,
+  .introducaoPrincipal2,
+  .divisorPrincipal3{
+    width: 650px;
+  }
+  .textoCardSuperior2{
+    width: 700px;
+  }
+  .titlePrincipal2{
+    font-size: 20px;
+  }
+  .introducaoPrincipal2{
+    font-size: 12px;
+  }
+  .divisorPrincipal3{
+    margin: 0;
+    margin-top: -15px;
+  }
+
+  p { font-size: 12px; } 
+
+  #imgFull{
+    width: 300px;
+    height: 200px;
+    margin: 0;
+    margin-left: 15px;
+  }
+  .titlePrincipal{
+    font-size: 16px;
+    width: 280px;
+  }
+  .introducaoPrincipal{
+    font-size: 10px;
+    width: 280px;
+  }
+  .divisorContainer{
+    width: 280px;
+    height: 65px;
+    margin: 0;
+  }
+  .divisorPrincipal{
+    width: 280px;
+    height: 10px;
+    margin: 0;
+    margin-bottom: 36px;
+  }
+  .lerNews{
+    height: 29px;
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 568px){
+
 }
 
 @media screen and (max-width: 350px){
-  .cardContainer {
-    grid-template-columns: 1fr;
-  }
+
 }
 
-@media screen and (min-width: 568px){
-  .cardContainer {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-@media screen and (min-width: 768px){
-  .cardContainer {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
-@media screen and (max-width: 1024px) {
-  .cardSuperior {
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center items horizontally */
-    text-align: center; /* Center text horizontally */
-  }
-  
-  .textoCardSuperior {
-    /* Your existing styles for text content */
-    margin-bottom: 20px; /* Add some space between text and image */
-  }
-}
+

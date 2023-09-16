@@ -58,12 +58,27 @@ const NewsNav: React.FC = () => {
   }, []) 
 
   const { favorites, toggleFavorite } = useFavorites()
+
+  const filteredNews = news
+  .filter((item) => item.tipo !== 'Release')
+  .map((item) => {
+    const newsImages = JSON.parse(item.imagens)
+    const baseUrl = 'https://agenciadenoticias.ibge.gov.br/'
+    const imageIntroUrl = newsImages?.image_intro
+      ? baseUrl + newsImages.image_intro
+      : null
+    return {
+      ...item,
+      imageIntroUrl: imageIntroUrl || '',
+    }
+  })
+  .slice(startIndex, startIndex + itemsPerPage)
  
   return (
     <>
       <div className="cardPai2">
         <div className="cardContainer2">
-          {news.slice(startIndex, startIndex + itemsPerPage).map((item, index) => (
+          {filteredNews.map((item, index) => (
             <div className="containerFullNews" key={item.id}>
 
               <div className="containerMenorFull">
@@ -74,11 +89,11 @@ const NewsNav: React.FC = () => {
                   src={
                     imageUrls[index].includes('/releases/')
                       ? ghost
-                      : imageUrls[index]
+                      : item.imageIntroUrl
                   }
                   id="imgFull"
                   alt="Imagem da notícia"
-                  key={imageUrls[index]}
+                  key={item.imageIntroUrl}
                   />
                 )}
                 </div> 
@@ -108,15 +123,18 @@ const NewsNav: React.FC = () => {
                     </button>
                   </div>
 
-                  <h2 className="titlePrincipal">{item.titulo}</h2>
+  
+                    <h2 className="titlePrincipal">{item.titulo}</h2>
 
-                  <p className="introducaoPrincipal" title="Api ilusória, pois não retorna a
-                  matéria completa!  🥲">
-                    {(item.introducao)}
-                  </p>
+                    <p className="introducaoPrincipal intro" title="Api ilusória, pois não retorna a
+                    matéria completa!  🥲">
+                      {(item.introducao)}
+                    </p>
 
                   <div className="divisorContainer">
+                    
                     <div className="divisorPrincipal">
+                     
                       <p className="introducaoPrincipal">
                         <b>Publidao em:</b>
                         {' '}
@@ -132,14 +150,20 @@ const NewsNav: React.FC = () => {
                       </button>
 
                     </div>
+
                   </div>
+
                 </div>
+
               </div>
+
             </div>
               ))}
         </div>
       </div>
-      <Footer handleButtonClick={ handleButtonClick } /> 
+      {news.some((item) => item.tipo !== 'Release') && ( 
+      <Footer handleButtonClick={handleButtonClick} />
+    )}
     </>
   )
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
@@ -32,6 +33,12 @@ export function Favorites() {
 
   const favoriteNews = news.filter((item) => favorites.includes(item.id))
 
+  const navigate = useNavigate()
+
+  const navigateToFullNews = (newsId: number) => {
+    navigate(`/new/${newsId}`)
+  }
+
   return (
     <>
       <div data-testid="favorites" className="centro">
@@ -47,8 +54,12 @@ export function Favorites() {
                   <div className="containerDivisor">
                     <div className="divisorPrincipal2">
                       <p className="introducaoPrincipal">{calculateDaysAgo(item.data_publicacao)}</p>
-                      <button className="lerNews">
-                        <p className="butao">Leia a notícia aqui</p>
+                      <button
+                      className="lerNews"
+                      onClick={() => navigateToFullNews(item.id)}
+                      data-id={item.id}
+                    >
+                        <p className="butao">Leia a notícia</p>
                       </button>
                     </div>
                   </div>

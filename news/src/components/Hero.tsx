@@ -76,7 +76,7 @@ export function Hero() {
                 </p>
 
                 <button
-                      className="lerNews"
+                      className="lerNews2"
                       onClick={() => navigateToFullNews(news[0].id)}
                       data-id={news[0].id}
                     >

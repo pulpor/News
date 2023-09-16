@@ -10,7 +10,12 @@ export function NavBar() {
               Mais recentes
             </Link>
           </li>
-          <li>Release</li>
+
+          <li>
+            <Link to="/release">
+              Release
+            </Link>
+          </li>
 
           <li>
             <Link to="/newsnav">
