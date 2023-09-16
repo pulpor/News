@@ -43,6 +43,7 @@ const NewsList: React.FC = () => {
 
   return (
     <>
+    
       <div data-testid="newlist" className="cardPai">
 
         <div className="cardContainer">

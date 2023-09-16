@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import logo from '../images/logo.png'
 
 export function Header() {
-
   return (
     <header data-testid="header">
       
@@ -13,6 +12,8 @@ export function Header() {
         </div> </div>
       </Link>
      
-    </header>
+    </header>  
+   
   )
+
 }
