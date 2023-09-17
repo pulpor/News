@@ -137,7 +137,7 @@ const NewsNav: React.FC = () => {
                     <div className="divisorPrincipal">
                      
                       <p className="introducaoPrincipal">
-                        <b>Publidao em:</b>
+                        <b>Publicado em:</b>
                         {' '}
                         {calculateDaysAgo(item.data_publicacao)}
                       </p>

@@ -43,7 +43,6 @@ const NewsList: React.FC = () => {
 
   return (
     <>
-    
       <div data-testid="newlist" className="cardPai">
 
         <div className="cardContainer">
@@ -61,6 +60,7 @@ const NewsList: React.FC = () => {
               <div className="bottomCard">
                 <div className="containerDivisor">
                   <div className="divisorPrincipal2">
+                    
                     <p className="introducaoPrincipal">
                       {calculateDaysAgo(item.data_publicacao)}
                     </p>

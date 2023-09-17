@@ -52,7 +52,9 @@ export function Hero() {
 
             <div className="textoCardSuperior">
               <div className="containerRecente">
+
                 <h3 id="newsRecentes">Notícia mais recente</h3>
+                
                 <button
                   className="favoriteButton fav"
                   onClick={() => toggleFavorite(news[0].id)}
@@ -64,6 +66,7 @@ export function Hero() {
                   }}
                 />
                 </button>
+
               </div>
 
               <h2 id="titlePrincipal">{news[0].titulo}</h2>
@@ -71,7 +74,7 @@ export function Hero() {
               <p className="introducaoPrincipal">{news[0].introducao.replace(regex,'.')}</p>
 
               <div className="divisorPrincipal">
-                <p className="introducaoPri.replace(/- Foto: /, '')ncipal">
+                <p className="introducaoPrincipal">
                   {calculateDaysAgo(news[0].data_publicacao)}
                 </p>
 

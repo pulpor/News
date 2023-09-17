@@ -4,31 +4,35 @@ export function NavBar() {
   return (
     <div data-testid="navbar" className="navContainer">
       <nav className="navbar">
-        <ul>
+        
+        <ul className="ul">
+          
           <li>
             <Link to="/">
-              Mais recentes
+              <a href="#" className="navigation">Mais recentes</a>
             </Link>
           </li>
 
           <li>
-            <Link to="/release">
-              Release
+            <Link className="navigation" to="/release">
+              <a href="#" className="navigation">Release</a>
             </Link>
           </li>
 
           <li>
             <Link to="/newsnav">
-              Notícia
+              <a href="#" className="navigation">Notícia</a>
             </Link>
           </li>
           
           <li>
             <Link to="/favorites">
-              Favoritas
+              <a href="#" className="navigation">Favoritas</a>
             </Link>
           </li>
+
         </ul>
+
       </nav>
     </div>
   )
