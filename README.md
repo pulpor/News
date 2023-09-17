@@ -21,6 +21,4 @@ A aplicação é totalmente responsiva e se adapta a diferentes tamanhos de tela
 
 ## Easter Eggs
 
-Para tornar a experiência mais divertida, foram adicionados alguns easter eggs na aplicação. No entanto, não vamos dar spoilers aqui! Veja se você consegue encontrá-los durante a navegação, mas lembre-se, nada de console.log!
-
-Sinta-se à vontade para clonar este repositório e explorar o Trybe News por conta própria. Espero que você aproveite a experiência e boa sorte na sua busca pelos easter eggs! 🐰🥚🎉
+Para tornar a experiência mais divertida, foram adicionados alguns easter eggs na aplicação. No entanto, não darei spoilers aqui! Veja se você consegue encontrá-los durante a navegação, uma dica: não é console.log! 🐰🥚🎉
