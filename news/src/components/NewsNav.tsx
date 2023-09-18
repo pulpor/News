@@ -19,15 +19,16 @@ const NewsNav: React.FC = () => {
   const [imageUrls, setImageUrls] = useState<string[]>([])
   
   const handleButtonClick = () => {
-    setStartIndex(startIndex + itemsPerPage)
-    updateImageUrls(startIndex + itemsPerPage)
+    const newStartIndex = startIndex + itemsPerPage;
+    setStartIndex(newStartIndex)
+    updateImageUrls(newStartIndex)
   }
   
   const updateImageUrls = (startIndex: number) => {
     const urls = news
       .slice(startIndex, startIndex + itemsPerPage)
       .map((item: News) => {
-        const newsImages = JSON.parse(JSON.stringify(item.imagens))
+        const newsImages = JSON.parse(item.imagens)
         const baseUrl = 'https://agenciadenoticias.ibge.gov.br/'
         const imageIntroUrl = newsImages?.image_intro
           ? baseUrl + newsImages.image_intro
@@ -62,9 +63,10 @@ const NewsNav: React.FC = () => {
   const filteredNews = news
   .filter((item) => item.tipo !== 'Release')
   .map((item) => {
+    const newsImages = JSON.parse(item.imagens)
     const baseUrl = 'https://agenciadenoticias.ibge.gov.br/'
-    const imageIntroUrl = item.imagens?.image_intro
-      ? baseUrl + item.imagens.image_intro
+    const imageIntroUrl = newsImages?.image_intro
+      ? baseUrl + newsImages.image_intro
       : null
     return {
       ...item,
@@ -89,7 +91,7 @@ const NewsNav: React.FC = () => {
                     src={
                       imageUrls[index].includes('/releases/')
                         ? ghost
-                        : imageUrls[index]
+                        : item.imageIntroUrl
                     }
                     id="imgFull"
                     alt="Imagem da notícia"
@@ -137,7 +139,7 @@ const NewsNav: React.FC = () => {
                     <div className="divisorPrincipal">
                      
                       <p className="introducaoPrincipal">
-                        <b>Publicado em:</b>
+                        <b>Publidao em:</b>
                         {' '}
                         {calculateDaysAgo(item.data_publicacao)}
                       </p>
