@@ -28,15 +28,16 @@ const NewsNav: React.FC = () => {
     const urls = news
       .slice(startIndex, startIndex + itemsPerPage)
       .map((item: News) => {
-        const newsImages = JSON.parse(item.imagens)
-        const baseUrl = 'https://agenciadenoticias.ibge.gov.br/'
+        const newsImages = JSON.parse(item.imagens as unknown as string); // Converter para objeto JavaScript
+        const baseUrl = 'https://agenciadenoticias.ibge.gov.br/';
         const imageIntroUrl = newsImages?.image_intro
           ? baseUrl + newsImages.image_intro
-          : null
-        return imageIntroUrl || ''
+          : null;
+        return imageIntroUrl || '';
       })
     setImageUrls(urls)
   }
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,7 +64,7 @@ const NewsNav: React.FC = () => {
   const filteredNews = news
   .filter((item) => item.tipo !== 'Release')
   .map((item) => {
-    const newsImages = JSON.parse(item.imagens)
+    const newsImages = JSON.parse(item.imagens as unknown as string)
     const baseUrl = 'https://agenciadenoticias.ibge.gov.br/'
     const imageIntroUrl = newsImages?.image_intro
       ? baseUrl + newsImages.image_intro

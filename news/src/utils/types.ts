@@ -1,4 +1,4 @@
-export interface News {
+export type News = {
   imageUrl: string;
   newsLink: string;
   newsDate: string;
@@ -15,7 +15,7 @@ export interface News {
   produtos: string;
   editorias: string;
   imagens: {
-  image_intro: string;
+    image_intro: string;
     image_fulltext: string;
   };
   produtos_relacionados: string;
