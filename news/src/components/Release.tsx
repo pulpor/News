@@ -78,8 +78,11 @@ const Release: React.FC = () => {
     <>
       <div className="cardPai2">
         <div className="cardContainer2">
-        {news.slice(startIndex - 1, startIndex + itemsPerPage - 1).map((item) => (
-            <div className="containerFullNews2" key={item.id}>
+        {news
+          .filter((item) => item.tipo === 'Release') // Filtra apenas os itens do tipo 'Release'
+          .slice(startIndex - 1, startIndex + itemsPerPage - 1)
+          .map((item) => (
+          <div className="containerFullNews2" key={item.id}>
              
                 <div className="textoCardSuperior2">
 
