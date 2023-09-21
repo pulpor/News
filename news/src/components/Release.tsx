@@ -89,6 +89,7 @@ const Release: React.FC = () => {
                   <div className="containerRecente2">
                     <h3 id="newsRecentes">
                       <p>
+                        
                         {item.tipo}
                         {'ㅤ'}
                         -
