@@ -1,34 +1,123 @@
-# Trybe News 🗞️
+# 📰 Pulpor News
 
-O Trybe News é um projeto desenvolvido como parte do processo seletivo para a vaga de Dev Tech Leader Super Senior na Trybe. Neste desafio, fui desafiado a criar uma aplicação responsiva em poucos dias, que se baseasse na API de notícias da IBGE.
+Um portal de notícias moderno e elegante, inspirado no design clássico de jornais tradicionais, desenvolvido com React, TypeScript e Vite.
 
-## Deploy do Site
-Você pode acessar a versão implantada do Trybe News [aqui](https://pulpor-news.vercel.app/).
+## ✨ Características
 
-<br>
-<div align="center">
-  <img src="./news/src/images/tela.png" alt="Imagem do Projeto" width="50%">
-</div>
-<br>
+- **Design Minimalista**: Interface limpa e profissional inspirada em jornais clássicos
+- **Tipografia Elegante**: Fontes serif refinadas (Playfair Display, Crimson Text, Lora)
+- **Responsivo**: Layout adaptável para diferentes tamanhos de tela
+- **Favoritos**: Sistema de marcação de notícias favoritas com persistência local
+- **Navegação Intuitiva**: Rotas organizadas com React Router
+- **Testes**: Cobertura de testes com Vitest e Testing Library
 
-## Tecnologias Utilizadas
-O projeto foi construído com as seguintes tecnologias:
+## 🛠️ Tecnologias
 
-- React.js
-- TypeScript
-- CSS puro
-- ESLint
-- RTL (React Testing Library)
-- Vite
-- Vitest
-- FontAwesome
+- **React 18.2** - Biblioteca para interfaces
+- **TypeScript 5.0** - Tipagem estática
+- **Vite 4.4** - Build tool e dev server
+- **React Router 6.16** - Roteamento
+- **FontAwesome** - Ícones
+- **Vitest** - Testes unitários
+- **ESLint** - Linting de código
 
-## Responsividade
-A aplicação é totalmente responsiva e se adapta a diferentes tamanhos de tela. Ela foi projetada para oferecer uma ótima experiência de usuário em dispositivos com resoluções de tela de 1024px, 768px, 568px e 350px.
+## 📁 Estrutura do Projeto
 
-## Easter Eggs
-Para tornar a experiência mais divertida, foram adicionados alguns easter eggs na aplicação. No entanto, não darei spoilers aqui! Veja se você consegue encontrá-los durante a navegação, uma dica: não é console.log! 🐰🥚🎉
+```
+news/
+├── src/
+│   ├── components/      # Componentes React
+│   │   ├── Header.tsx
+│   │   ├── Hero.tsx
+│   │   ├── NavBar.tsx
+│   │   ├── NewList.tsx
+│   │   ├── Favorites.tsx
+│   │   ├── FullNews.tsx
+│   │   └── Footer.tsx
+│   ├── context/         # Context API
+│   ├── utils/           # Utilitários e helpers
+│   ├── style/           # Estilos CSS
+│   ├── images/          # Assets de imagens
+│   └── test/            # Testes
+├── index.html
+├── package.json
+└── vite.config.ts
+```
 
+## 🚀 Instalação e Uso
 
+### Pré-requisitos
 
+- Node.js (versão 16 ou superior)
+- npm ou yarn
 
+### Instalação
+
+```bash
+# Clone o repositório
+git clone https://github.com/pulpor/News.git
+
+# Entre na pasta do projeto
+cd News/news
+
+# Instale as dependências
+npm install
+```
+
+### Executar o projeto
+
+```bash
+# Modo desenvolvimento
+npm run dev
+
+# Build para produção
+npm run build
+
+# Preview da build
+npm run preview
+```
+
+### Testes
+
+```bash
+# Executar testes
+npm test
+
+# Cobertura de testes
+npm run coverage
+```
+
+### Linting
+
+```bash
+npm run lint
+```
+
+## 🎨 Design
+
+O projeto utiliza uma paleta de cores neutra e elegante:
+
+- **Background**: `#fafaf9` (bege claro)
+- **Texto principal**: `#1a1a1a` (preto)
+- **Texto secundário**: `#525252` (cinza)
+- **Accent**: `#dc2626` (vermelho discreto)
+- **Cards**: `#ffffff` (branco)
+
+### Tipografia
+
+- **Títulos**: Playfair Display (serif clássica)
+- **Corpo**: Crimson Text (legibilidade otimizada)
+- **Secundária**: Lora (elegância moderna)
+
+## 📄 Licença
+
+Este projeto é privado e de uso educacional.
+
+## 👤 Autor
+
+**pulpor**
+- GitHub: [@pulpor](https://github.com/pulpor)
+
+---
+
+Desenvolvido com ☕ e 📰
