@@ -93,6 +93,33 @@ npm run coverage
 npm run lint
 ```
 
+## 🚀 Deploy no GitHub Pages
+
+O projeto está configurado para deploy automático no GitHub Pages via GitHub Actions.
+
+### Configuração Inicial
+
+1. No seu repositório do GitHub, vá em **Settings > Pages**
+2. Em **Source**, selecione **GitHub Actions**
+3. Faça push para a branch `main` e o deploy será automático
+
+### Deploy Manual
+
+```bash
+# Build do projeto
+npm run build
+
+# Os arquivos estarão na pasta dist/
+```
+
+O site ficará disponível em: `https://pulpor.github.io/News/`
+
+### Estrutura de Deploy
+
+- **Vite Config**: `base: '/News/'` configurado para subdiretório do GitHub Pages
+- **GitHub Actions**: Workflow automático em `.github/workflows/deploy.yml`
+- **Build Output**: Pasta `dist/` contém os arquivos de produção
+
 ## 🎨 Design
 
 O projeto utiliza uma paleta de cores neutra e elegante:
